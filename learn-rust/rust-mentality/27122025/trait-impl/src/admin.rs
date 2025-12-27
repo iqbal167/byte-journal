@@ -5,6 +5,12 @@ pub struct SuperAdmin {
     pub admin_code: u32,
 }
 
+impl SuperAdmin {
+    pub fn get_admin_code(&self) -> u32 {
+        self.admin_code
+    }
+}
+
 impl Identity for SuperAdmin {
     fn get_name(&self) -> &str {
         &self.username
@@ -16,6 +22,6 @@ impl Identity for SuperAdmin {
 }
 
 impl AccessControl for SuperAdmin {
-    fn can_read(&self) -> bool { true}
-    fn can_delete(&self) -> bool { true}
+    fn can_read(&self) -> bool { true }
+    fn can_delete(&self) -> bool { true }
 }

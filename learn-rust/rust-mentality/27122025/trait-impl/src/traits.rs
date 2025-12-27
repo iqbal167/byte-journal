@@ -4,6 +4,6 @@ pub trait Identity {
 }
 
 pub trait AccessControl {
-    fn can_read(&self) -> &bool;
-    fn can_delete(&self) -> &bool;
+    fn can_read(&self) -> bool;
+    fn can_delete(&self) -> bool;
 }

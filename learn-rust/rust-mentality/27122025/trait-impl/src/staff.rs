@@ -5,7 +5,13 @@ pub struct Staff {
     pub departement: String,
 }
 
-impl Identity for SuperAdmin {
+impl Staff {
+    pub fn get_departement(&self) -> &str {
+        &self.departement
+    }
+}
+
+impl Identity for Staff {
     fn get_name(&self) -> &str {
         &self.username
     }
@@ -15,7 +21,7 @@ impl Identity for SuperAdmin {
     }
 }
 
-impl AccessControl for SuperAdmin {
-    fn can_read(&self) -> bool { true}
-    fn can_delete(&self) -> bool { false}
+impl AccessControl for Staff {
+    fn can_read(&self) -> bool { true }
+    fn can_delete(&self) -> bool { false }
 }
