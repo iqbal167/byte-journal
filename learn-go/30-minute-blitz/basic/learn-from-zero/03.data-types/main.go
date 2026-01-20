@@ -47,7 +47,8 @@ func main() {
 	var fn func(int8) int8 // function that takes int8 and returns int8
 
 	fmt.Println(slice1 == nil) // true
-	fmt.Println(map1 == nil)   // trueß
+	fmt.Println(map1 == nil)   // true
+	fmt.Println(fn == nil)     // true
 
-	fmt.Println(pointer, slice1, map1, channel1, iface, fn)
+	fmt.Println(pointer, slice1, map1, channel1, iface)
 }
