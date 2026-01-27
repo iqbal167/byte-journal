@@ -1,7 +1,10 @@
+from model import Task
+
 def add_task(args):
     description = args.description
-    print(f"Adding task: {description}")
-
+    task = Task(description=description)
+   
+    print(f"Adding task: {task.to_dict()}")
 
 def update_task(args):
     id = args.id
@@ -9,8 +12,8 @@ def update_task(args):
     print(f"Updating task {id} with description: {description}")
 
 def delete_task(args):
-        id = args.id
-        print(f"Deleting task {id}")
+    id = args.id
+    print(f"Deleting task {id}")
 
 def mark_in_progress(args):
     id = args.id
