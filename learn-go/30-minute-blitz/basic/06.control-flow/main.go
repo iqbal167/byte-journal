@@ -30,6 +30,21 @@ func main() {
 		}
 	}
 
+	// for with struct
+	fmt.Println("MyStruct")
+	type MyStruct struct {
+		Field1 *MyStruct
+	}
+
+	myStruct := &MyStruct{
+		Field1: nil,
+	}
+
+	for myStruct.Field1 != nil {
+		fmt.Println("My Field")
+		fmt.Println(myStruct.Field1)
+	}
+
 	// for with braak
 	for i := range 10 {
 		if i == 5 {
