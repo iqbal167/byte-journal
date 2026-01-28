@@ -6,6 +6,7 @@ func main() {
 	var num1 int = 10
 
 	// if-else statement
+	fmt.Println("if-else statement")
 	if num1 > 0 {
 		fmt.Println("num1 is positive")
 	} else if num1 < 0 {
@@ -15,6 +16,7 @@ func main() {
 	}
 
 	// switch statement
+	fmt.Println("switch statement")
 	switch num1 {
 	case 1:
 		fmt.Println("num1 is one")
@@ -24,14 +26,21 @@ func main() {
 		fmt.Println("num1 is neither one nor two")
 	}
 
+	// for loop with range
+	fmt.Println("for loop with range")
 	for i := range 10 {
 		if i%2 == 0 {
 			fmt.Println(i)
 		}
 	}
 
-	// for with struct
-	fmt.Println("MyStruct")
+	// for loop with condition
+	fmt.Println("for loop with condition")
+	for num1 > 1 {
+		num1--
+		fmt.Println(num1)
+	}
+
 	type MyStruct struct {
 		Field1 *MyStruct
 	}
@@ -46,6 +55,7 @@ func main() {
 	}
 
 	// for with braak
+	fmt.Println("for loop with break")
 	for i := range 10 {
 		if i == 5 {
 			break
@@ -54,6 +64,7 @@ func main() {
 	}
 
 	// for with continue
+	fmt.Println("for loop with continue")
 	for i := range 10 {
 		if i%2 == 0 {
 			continue
@@ -62,6 +73,7 @@ func main() {
 	}
 
 	// switch statement with fallthrough: fallthrough is rarely used in Go
+	fmt.Println("switch statement with fallthrough")
 	switch num1 {
 	case 1:
 		fmt.Println("num1 is one")
@@ -74,6 +86,7 @@ func main() {
 	}
 
 	// switch with goto: goto is rarely used in Go
+	fmt.Println("switch statement with goto")
 	switch num1 {
 	case 1:
 		fmt.Println("num1 is one")
@@ -85,6 +98,7 @@ func main() {
 	}
 
 	// if with goto
+	fmt.Println("if with goto")
 	for i := range 10 {
 		if i == 5 {
 			goto end
@@ -94,4 +108,22 @@ func main() {
 
 end:
 	fmt.Println("end of switch statement")
+
+	fmt.Println("outerloop:")
+outerloop:
+	for i := range 5 {
+		for j := range 5 {
+			if i == 3 {
+				break outerloop
+			}
+			fmt.Print("matriks [", i, "][", j, "]", "\n")
+		}
+	}
+
+	/* forever loop
+	fmt.Println("forever loop")
+	for {
+		do stuff here
+	}
+	*/
 }
