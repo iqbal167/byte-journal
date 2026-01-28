@@ -3,9 +3,10 @@
 ## Setup
 ```bash
 uv sync
+source .venv/bin/activate
 ```
 
 ## Run
 ```bash
-uv run fastapi dev app/main.py --port 8000
+fastapi dev app/main.py --port 8000
 ```
