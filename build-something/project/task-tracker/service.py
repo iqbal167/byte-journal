@@ -1,11 +1,17 @@
 from model import Task
+from storage import load_state, save_state
 
 def add_task(args):
-    description = args.description
-    task = Task(description=description)
-   
-    print(f"Adding task: {task.to_dict()}")
+        description = args.description
+        task = Task(description=description)
 
+        state = load_state()
+        state["tasks"].append(task.to_dict())
+
+        save_state(state)
+
+        print(f"Adding task: {task.to_dict()}")
+   
 def update_task(args):
     id = args.id
     description = args.description

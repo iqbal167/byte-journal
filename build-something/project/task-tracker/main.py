@@ -38,4 +38,7 @@ list_parser.set_defaults(func=service.list_tasks)
 args = parser.parse_args()
 
 # Call the function associated with the command
-args.func(args)
+try:
+    args.func(args)
+except Exception as e:
+    print(f"Error: {e}")
