@@ -2,8 +2,8 @@
 
 ## Requirements
 
-- [] Add tasks
-- [] Update task
+- [x] Add tasks
+- [x] Update task
 - [] Delete task
 - [] Mark task as in progress
 - [] Mark task as done

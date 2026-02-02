@@ -15,9 +15,6 @@ class Task:
     status: Status = Status.TODO
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     updated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
-
-    def touch(self):
-        self.updated_at = datetime.now(timezone.utc).isoformat()
     
     def to_dict(self):
         return {
@@ -28,6 +25,7 @@ class Task:
             "updated_at": self.updated_at,
         }
 
+    @staticmethod
     def from_dict(data: dict): 
         return Task(
             description=data["description"],

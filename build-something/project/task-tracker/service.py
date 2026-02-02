@@ -1,5 +1,6 @@
 from model import Task
 from storage import load_state, save_state
+from datetime import datetime, timezone
 
 def add_task(args):
         description = args.description
@@ -15,7 +16,21 @@ def add_task(args):
 def update_task(args):
     id = args.id
     description = args.description
-    print(f"Updating task {id} with description: {description}")
+
+    state = load_state()
+
+    tasks = state["tasks"]
+
+    for task in tasks:
+        if task["id"] == id:
+            task["description"] = description
+            task["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+            save_state(state)
+            print(f"Updating task {id} with description: {description}")
+            return 
+
+    raise ValueError(f"Task with id {id} not found")
 
 def delete_task(args):
     id = args.id
