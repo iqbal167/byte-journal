@@ -1,6 +1,7 @@
 from model import Task
 from storage import load_state, save_state
 from datetime import datetime, timezone
+import helper
 
 def add_task(args):
         description = args.description
@@ -21,20 +22,32 @@ def update_task(args):
 
     tasks = state["tasks"]
 
-    for task in tasks:
-        if task["id"] == id:
-            task["description"] = description
-            task["updated_at"] = datetime.now(timezone.utc).isoformat()
+    found = helper.find_task_by_id(tasks, id)
 
-            save_state(state)
-            print(f"Updating task {id} with description: {description}")
-            return 
+    if not found:
+        raise ValueError(f"Task with id {id} not found")
 
-    raise ValueError(f"Task with id {id} not found")
+    found["description"] = description
+    found["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+    save_state(state)
+    print(f"Updating task {id} with description: {description}")
 
 def delete_task(args):
     id = args.id
-    print(f"Deleting task {id}")
+
+    state = load_state()
+
+    tasks = state["tasks"]
+
+    found = helper.find_task_by_id(tasks, id)
+    if found:
+        tasks.remove(found)
+        save_state(state)
+        print(f"Deleting task {id}")
+        return
+
+    raise ValueError(f"Task with id {id} not found")
 
 def mark_in_progress(args):
     id = args.id
