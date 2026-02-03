@@ -46,9 +46,9 @@
 - [ ] TypeScript - Implementation
 
 ## Stack
-- [ ] Python - Using list
+- [x] Python - Using list
 - [ ] Python - Using linked list
-- [ ] Go - Using slice
+- [x] Go - Using slice
 - [ ] Go - Using linked list
 - [ ] Rust - Using Vec
 - [ ] Rust - Using linked list
