@@ -1,4 +1,4 @@
-from model import Task
+from model import Task, Status
 from storage import load_state, save_state
 from datetime import datetime, timezone
 import helper
@@ -51,10 +51,38 @@ def delete_task(args):
 
 def mark_in_progress(args):
     id = args.id
+
+    state = load_state()
+
+    tasks = state["tasks"]
+
+    found = helper.find_task_by_id(tasks, id)
+    if not found:
+        raise ValueError(f"Task with id {id} not found")
+
+    found["status"] = Status.IN_PROGRESS.value
+    found["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+    save_state(state)
+
     print(f"Marking task {id} as in progress")
 
 def mark_done(args):
     id = args.id
+
+    state = load_state()
+
+    tasks = state["tasks"]
+
+    found = helper.find_task_by_id(tasks, id)
+    if not found:
+        raise ValueError(f"Task with id {id} not found")
+
+    found["status"] = Status.DONE.value
+    found["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+    save_state(state)
+
     print(f"Marking task {id} as done")
 
 def list_tasks(args):
