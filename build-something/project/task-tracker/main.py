@@ -33,7 +33,7 @@ mark_done_parser.set_defaults(func=service.mark_done)
 
 # List all tasks
 list_parser = subparsers.add_parser("list", help="List all tasks")
-list_parser.add_argument("--status", help= "Task status (done/todo/in-progress)", choices=['done', 'in-progress', 'todo'])
+list_parser.add_argument("status", nargs="?", default=None, help= "Task status (done/todo/in-progress)", choices=['done', 'in-progress', 'todo'])
 list_parser.set_defaults(func=service.list_tasks)
 
 # Parse the arguments

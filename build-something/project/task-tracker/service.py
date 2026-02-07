@@ -86,5 +86,13 @@ def mark_done(args):
     print(f"Marking task {id} as done")
 
 def list_tasks(args):
-    status = args.status
-    print(f"Listing tasks with status: {status}")
+    state = load_state()
+    tasks = state["tasks"]
+
+    if args.status:
+        tasks = [task for task in tasks if task["status"] == args.status]
+        print(tasks)
+
+        return 
+
+    print(tasks)
