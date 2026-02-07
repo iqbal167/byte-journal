@@ -3,7 +3,10 @@ import json
 FILE_NAME = "tasks.json"
 
 def get_default_structure():
-    return { "tasks": [] }
+    return { 
+        "last_id": 0,
+        "tasks": [] 
+    }
 
 def load_state():
     default_structure = get_default_structure()

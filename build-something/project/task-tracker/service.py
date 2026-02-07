@@ -5,14 +5,19 @@ import helper
 
 def add_task(args):
         description = args.description
-        task = Task(description=description)
 
         state = load_state()
+
+        new_id = state["last_id"] + 1
+
+        task = Task(id=new_id, description=description)
+
         state["tasks"].append(task.to_dict())
+        state["last_id"] = new_id
 
         save_state(state)
 
-        print(f"Adding task: {task.to_dict()}")
+        print(f"Task added successfully (ID: {new_id})")
    
 def update_task(args):
     id = args.id
@@ -31,7 +36,6 @@ def update_task(args):
     found["updated_at"] = datetime.now(timezone.utc).isoformat()
 
     save_state(state)
-    print(f"Updating task {id} with description: {description}")
 
 def delete_task(args):
     id = args.id
@@ -44,7 +48,7 @@ def delete_task(args):
     if found:
         tasks.remove(found)
         save_state(state)
-        print(f"Deleting task {id}")
+
         return
 
     raise ValueError(f"Task with id {id} not found")
@@ -65,8 +69,6 @@ def mark_in_progress(args):
 
     save_state(state)
 
-    print(f"Marking task {id} as in progress")
-
 def mark_done(args):
     id = args.id
 
@@ -83,16 +85,11 @@ def mark_done(args):
 
     save_state(state)
 
-    print(f"Marking task {id} as done")
-
 def list_tasks(args):
     state = load_state()
     tasks = state["tasks"]
 
     if args.status:
         tasks = [task for task in tasks if task["status"] == args.status]
-        print(tasks)
-
-        return 
 
     print(tasks)

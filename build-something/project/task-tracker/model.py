@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from uuid import uuid4, UUID
 from enum import Enum
 
 class Status(Enum):
@@ -11,14 +10,14 @@ class Status(Enum):
 @dataclass
 class Task:
     description: str
-    id: UUID = field(default_factory=uuid4)
+    id: int
     status: Status = Status.TODO
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     updated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     
     def to_dict(self):
         return {
-            "id": str(self.id),
+            "id": self.id,
             "description": self.description,
             "status": self.status.value,
             "created_at": self.created_at,
@@ -29,7 +28,7 @@ class Task:
     def from_dict(data: dict): 
         return Task(
             description=data["description"],
-            id=UUID(data["id"]),
+            id=data["id"],
             status=Status(data["status"]),
             created_at=data["created_at"],
             updated_at=data["updated_at"],
