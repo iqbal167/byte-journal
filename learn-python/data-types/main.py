@@ -1,4 +1,7 @@
+# Numberic, String, and Boolean (single-value) Data Types is Immutable
 
+# Primitive Data Types
+print("Primitive Data Types:")
 
 # Numeric Data Types
 print("Numeric Data Types:")
@@ -19,7 +22,8 @@ print('He said,' '"Halo!"') # Use single quote if there is a double quote in the
 with_new_line = """
 Hello, World!
 It's a beautiful day.
-"""
+""" 
+# Or use '''<string>''' to create multi-line string
 print(with_new_line)
 
 # Boolean Data Type
@@ -32,10 +36,16 @@ print("None Data Type:")
 none = None
 print("none", none)
 
+# Collection Data Types
+print("Collection Data Types:")
+
 # List Data Type
+# Ordered
 # Mutable Data Type
 print("List Data Type:")
 example_list = [1, "iqbal", True]
+print("example_list", example_list)
+example_list[0] = 2
 print("example_list", example_list)
 
 # Tuple Data Type
@@ -62,3 +72,10 @@ example_dict = {
     'classes': ['Math', 'English'],
 }
 print("example_dict", example_dict)
+
+# Memory Address of the String
+example_str = "Hello"
+print("Memory Address of example_str:", id(example_str))
+example_str += " World!"
+print("example_str:", example_str)
+print("Memory Address of example_str After Concatenation:", id(example_str))

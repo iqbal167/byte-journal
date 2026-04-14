@@ -13,6 +13,10 @@ print("Name: %s, Score: %d, Is Pass: %s" % (name, score, is_pass))
 print("f-string Style:")
 print(f"Name: {name}, Score: {score}, Is Pass: {is_pass}")
 
+# str.format Style
+print("str.format Style:")
+print("Name: {}, Score: {}, Is Pass: {}".format(name, score, is_pass))
+
 print("Declare variable with data type:")
 name: str = 'Iqbal'
 score: int = 90
