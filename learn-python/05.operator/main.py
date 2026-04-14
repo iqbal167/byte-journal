@@ -24,6 +24,25 @@ print("Assignment Operator:")
 num3 = 2
 print(num3)
 
+# Compound Assignment Operator
+print("Compound Assignment Operator:")
+asg = 1
+print("asg =", asg)
+asg += 2
+print("asg += 2 =", asg)
+asg -= 2
+print("asg -= 2 =", asg)
+asg *= 2
+print("asg *= 2 =", asg)
+asg /= 2
+print("asg /= 2 =", asg)
+asg //= 2
+print("asg //= 2 =", asg)
+asg ** 2
+print("asg ** 2 =", asg ** 2)
+asg %= 2
+print("asg %= 2 =", asg)
+
 # Comparison Operator
 print("Comparison Operator:")
 print("1 == 2", 1 == 2)
@@ -37,8 +56,12 @@ print("1 >= 2", 1 >= 2)
 print("Logical Operator:")
 result1 = (1 == 2) and (2 > 1)
 print("AND",result1)
+print("1 & 2 =", 1 & 2)
+
 result2 = (1 == 2) or (2 > 1)
 print("OR",result2)
+print("1 | 2 =", 1 | 2)
+
 result3 = not (1 == 2)
 print("NOT",result3)
 
