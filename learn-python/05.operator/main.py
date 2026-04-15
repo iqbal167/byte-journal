@@ -82,7 +82,7 @@ num5 = 10
 num6 = 11
 print("10 is 11", num5 is num6) # False
 print("10 is not 11", num5 is not num6) # True
-print(id(num5), id(num6))
+print("Identity of 10:", id(num5), "Identity of 11:", id(num6))
 
 print("Membership Operator")
 list_of_num = [1, 2, 3, 4, 5]
